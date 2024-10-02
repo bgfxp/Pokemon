@@ -9,13 +9,13 @@ const Pokemon = () => {
   const [pokemonDetails, setPokemonDetails] = useState(null);
 
   useEffect(() => {
-    // Fetch types on load
+  
     fetch('https://pokeapi.co/api/v2/type')
       .then(response => response.json())
       .then(data => setPokemonTypes(data.results))
       .catch(error => console.log('Error fetching Pokémon types:', error));
 
-    // Fetch full Pokémon list
+  
     fetch('https://pokeapi.co/api/v2/pokemon?limit=1000')
       .then(response => response.json())
       .then(data => setFilteredPokemons(data.results))
@@ -24,7 +24,7 @@ const Pokemon = () => {
 
   useEffect(() => {
     if (selectedType) {
-      // Filter Pokémon by type
+      
       fetch(`https://pokeapi.co/api/v2/type/${selectedType}`)
         .then(response => response.json())
         .then(data => {
@@ -33,7 +33,7 @@ const Pokemon = () => {
         })
         .catch(error => console.log('Error fetching Pokémon by type:', error));
     } else {
-      // Reset to full Pokémon list
+     
       fetch('https://pokeapi.co/api/v2/pokemon?limit=1000')
         .then(response => response.json())
         .then(data => setFilteredPokemons(data.results))
@@ -43,7 +43,7 @@ const Pokemon = () => {
 
   useEffect(() => {
     if (pokemon) {
-      // Fetch Pokémon details when one is selected
+      
       fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
         .then(response => response.json())
         .then(data => setPokemonDetails(data))
@@ -95,7 +95,7 @@ const Pokemon = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#0000FF', // Fundo azul
+    backgroundColor: '#0000FF', 
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -114,13 +114,13 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   pickerContainer: {
-    flexDirection: 'row', // Coloca os Pickers lado a lado
+    flexDirection: 'row', 
     justifyContent: 'space-between',
     marginBottom: 20,
     width: '100%',
   },
   picker: {
-    width: '48%', // Ocupa metade do espaço disponível
+    width: '48%', 
     height: 50,
     borderRadius: 10,
   },
